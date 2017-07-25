@@ -1,0 +1,41 @@
+<div id="circleCont" style="border: 1px solid;width: 90%;height: 50%;margin: 5% auto;position: relative;overflow: hidden;">
+</div>
+
+<script src="https://goo.gl/x3ku2K"></script>
+<script type="text/javascript">
+    $( document ).ready(function() {
+        var maxsize = 50;
+        var minsize = 5;
+
+        //-----------//
+        var ancho = $("#circleCont").width();
+        var alto = $("#circleCont").height();
+        
+        getItems();
+
+        $(window).resize(function() {
+            ancho = $("#circleCont").width();
+            alto = $("#circleCont").height();
+            $("#circleCont").empty();
+            getItems();
+        });
+
+        function getItems() {
+            for (var i=0; i <= 50; i ++) {
+                var size = getSize(maxsize, minsize);
+                $("#circleCont").append(getCircle(ancho, alto, size));
+            }
+        }
+
+        function getSize(maxsize, minsize) {
+            return Math.floor((Math.random() * maxsize) + minsize);
+        }
+
+        function getCircle(ancho, alto, size) {
+            var posX = Math.floor((Math.random() * ancho) + 1);
+            var posY = Math.floor((Math.random() * alto) + 1);
+
+            return '<div style="border: 1px solid;width: ' + size + 'px;height: ' + size + 'px;position: absolute;left: ' + posX + 'px;top: ' + posY + 'px;"></div>';
+        }
+    });
+</script>
